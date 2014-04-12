@@ -48,6 +48,8 @@ var UserApp = new Backbone.Marionette.Application();
                 userToDelete.destroy({success: function () {
                     context.userList();
                 }});
+            }, error: function () {
+                context.userList();
             }});
         },
         openEditView: function (user) {
