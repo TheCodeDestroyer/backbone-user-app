@@ -10,6 +10,22 @@ var UserApp = UserApp || {};
         },
         url: function (){
             return this.urlRoot() + '/' + (this.id ? this.id : 'add');
+        },
+        validate: function (attrs) {
+            var validationErrors = new Array();
+            if (!attrs.name) {
+                validationErrors.push({ field:'name', error: 'Please fill name field.'});
+            }
+            if (!attrs.email) {
+                validationErrors.push({ field:'email', error: 'Please fill email field.'});
+
+            }
+            if (!attrs.role) {
+                validationErrors.push({ field:'role', error: 'Please fill role field.'});
+            }
+            if  (validationErrors.length > 0){
+                return validationErrors;
+            }
         }
     });
 

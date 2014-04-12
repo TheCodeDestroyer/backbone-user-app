@@ -41,17 +41,20 @@
         </script>
 
         <script type="text/html" id="userEditTemplate">
-            <div class="row">
-                <label for="nameField">Name:</label>
+            <div class="row form-group">
+                <label for="nameField" class="control-label">Name:</label>
                 <input id="nameField" class="form-control" type="text" value="{{ name }}" />
+                <span id="nameValidation" class="control-label" style="display:none;"></span>
             </div>
-            <div class="row">
-                <label for="emailField">Email:</label>
+            <div class="row form-group">
+                <label for="emailField" class="control-label">Email:</label>
                 <input id="emailField" class="form-control" type="text" value="{{ email }}"/>
+                <span id="emailValidation" class="control-label" style="display:none;"></span>
             </div>
-            <div class="row">
-                <label for="roleField">Role:</label>
+            <div class="row form-group">
+                <label for="roleField" class="control-label">Role:</label>
                 <input id="roleField" class="form-control" type="text" value="{{ role }}"/>
+                <span id="roleValidation" class="control-label" style="display:none;"></span>
             </div>
             <div class="row">
                 <button id="saveUser" class="btn btn-primary">Save</button>

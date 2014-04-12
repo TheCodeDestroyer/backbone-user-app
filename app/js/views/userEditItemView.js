@@ -13,12 +13,24 @@ var UserApp = UserApp || {};
         template : Handlebars.compile($('#userEditTemplate').html()),
         saveUser: function() {
             var context = this;
-            context.model.attributes.name = $('#nameField').val();
-            context.model.attributes.email = $('#emailField').val();
-            context.model.attributes.role = $('#roleField').val();
-            context.model.save([], { success: function (){
-                context.returnToList();
-            }});
+            context.model.set('name', $('#nameField').val());
+            context.model.set('email', $('#emailField').val());
+            context.model.set('role', $('#roleField').val());
+
+            if (context.model.isValid()) {
+                context.model.save([], { success: function (){
+                    context.returnToList();
+                }});
+            }
+            else{
+                var validationErros = context.model.validationError;
+                for (var i = 0; i < validationErros.length; i++) {
+                    $('#' + validationErros[i].field + 'Field').parent().addClass('has-error');
+                    $('#' + validationErros[i].field + 'Validation').show().html(validationErros[i].error);
+                }
+            }
+
+
         },
         returnToList: function() {
             UserApp.router.navigate('/users', true);
