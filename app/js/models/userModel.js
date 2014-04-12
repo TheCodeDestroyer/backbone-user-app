@@ -13,6 +13,10 @@ var UserApp = UserApp || {};
         },
         validate: function (attrs) {
             var validationErrors = new Array();
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if(!re.test(attrs.email)){
+                validationErrors.push({ field:'email', error: 'Email should be in correct format.'});
+            }
             if (!attrs.name) {
                 validationErrors.push({ field:'name', error: 'Please fill name field.'});
             }

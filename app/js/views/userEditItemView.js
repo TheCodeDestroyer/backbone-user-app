@@ -23,10 +23,13 @@ var UserApp = UserApp || {};
                 }});
             }
             else{
-                var validationErros = context.model.validationError;
-                for (var i = 0; i < validationErros.length; i++) {
-                    $('#' + validationErros[i].field + 'Field').parent().addClass('has-error');
-                    $('#' + validationErros[i].field + 'Validation').show().html(validationErros[i].error);
+                var validationErrors = context.model.validationError;
+                $('.has-error').find('span').hide().html('');
+                $('.has-error').removeClass('has-error');
+
+                for (var i = 0; i < validationErrors.length; i++) {
+                    $('#' + validationErrors[i].field + 'Field').parent().addClass('has-error');
+                    $('#' + validationErrors[i].field + 'Validation').show().html(validationErrors[i].error);
                 }
             }
 
