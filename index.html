@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>User App</title>
+        <link href="app/css/bootstrap/bootstrap.css" rel="stylesheet">
+        <link href="app/css/bootstrap/bootstrap-theme.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <a href="#/" class="navbar-brand span2">User Application</a>
+            <a href="#/users/-1" class="btn navbar-btn btn-primary">Add a new user</a>
+        </nav>
+
+        <div class="container" id="contentSection"></div>
+
+
+        <!--TEMPLATES-->
+        <script type="text/html" id="userTemplate">
+            <td>{{ name }}</td>
+            <td>{{ email }}</td>
+            <td>{{ role }}</td>
+            <td>
+                <a class="btn btn-default" href="#users/{{id}}">Edit</a>
+                <a class="btn btn-default" href="#deleteUser/{{id}}">Delete</a>
+            </td>
+        </script>
+
+        <script type="text/template" id="usersTemplate">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </script>
+
+        <script type="text/html" id="userEditTemplate">
+            <div class="row">
+                <label for="nameField">Name:</label>
+                <input id="nameField" class="form-control" type="text" value="{{ name }}" />
+            </div>
+            <div class="row">
+                <label for="emailField">Email:</label>
+                <input id="emailField" class="form-control" type="text" value="{{ email }}"/>
+            </div>
+            <div class="row">
+                <label for="roleField">Role:</label>
+                <input id="roleField" class="form-control" type="text" value="{{ role }}"/>
+            </div>
+            <div class="row">
+                <button id="saveUser" class="btn btn-primary">Save</button>
+                <button id="cancel" class="btn btn-default">Cancel</button>
+            </div>
+        </script>
+
+        <!--LIBS-->
+        <script src="lib/jquery/jquery-2.1.0.js"></script>
+        <script src="lib/underscore/underscore.js"></script>
+        <script src="lib/backbone/backbone.js"></script>
+        <script src="lib/backbone/backbone.wreqr.js"></script>
+        <script src="lib/backbone/backbone.babysitter.js"></script>
+        <script src="lib/backbone/backbone.marionette.js"></script>
+        <script src="lib/handlebars-v1.3.0.js"></script>
+
+        <!--APP-->
+        <script src="app/js/app.js "></script>
+        <script src="app/js/models/userModel.js"></script>
+        <script src="app/js/collections/userCollection.js"></script>
+        <script src="app/js/views/userItemView.js"></script>
+        <script src="app/js/views/userCompositeView.js"></script>
+        <script src="app/js/views/userEditItemView.js"></script>
+
+    </body>
+</html>
